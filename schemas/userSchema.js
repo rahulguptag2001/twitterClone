@@ -31,11 +31,11 @@ const UserSchema=new Schema({
     },
     profilePic:{
         type:String,
-        default:"/images/profilepic.png"
-    }
+        default:"../public/images/profilepic.png"
+    },
 },{ timestamps:true});
 
 
-let user= mongoose.model("user",UserSchema);
+let User= mongoose.model("User",UserSchema);
 
-module.exports=user;
+module.exports=User;

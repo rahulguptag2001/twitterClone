@@ -14,10 +14,11 @@ const server = app.listen(PORT, () => {
 //routes
 const loginRoute = require('./routes/loginroutes');
 const registerRoute = require('./routes/registerroutes');
+const logoutRoute=require('./routes/logout');
+
+
 const { url } = require('inspector');
 
-app.use('/login', loginRoute);
-app.use('/register', registerRoute);
 
 
 app.set("view engine", 'pug');
@@ -26,16 +27,20 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session({
-    secret:"daru piyo",
+    secret:"daru piyo bhenchoo",
     resave:true,
     saveUninitialized:false
 }))
 
+app.use('/login', loginRoute);
+app.use('/register', registerRoute);
+app.use('/logout',logoutRoute);
 
 app.get('/', middleware.requireLogin, (req, res, next) => {
 
     let payload = {
-        pageTitle: "home"
+        pageTitle: "Home",
+        userLoggedIn: req.session.user
     }
-    res.status(200).render("home", payload);
+    res.status(200).render("home.pug", payload);
 })

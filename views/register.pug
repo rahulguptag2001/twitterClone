@@ -5,6 +5,8 @@ block content
         h1 Register 
         form#registerform(method="POST", onsubmit="event.preventDefault(); validateform();")
              
+            p.errorMessage #{errorMessage}
+
             input(type="text",name="firstName",placeholder="First name",required="")
             input(type="text",name="lastName",placeholder="Last name",required="")
             input(type="text",name="userName",placeholder="Username",required="")
