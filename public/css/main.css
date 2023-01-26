@@ -5,6 +5,9 @@
     --spacing: 15px;
     --bluelight:#9BD1F9;
 }
+*{
+    outline: none !important;
+}
 
 a{
     color: inherit;
