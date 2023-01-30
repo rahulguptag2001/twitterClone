@@ -1,7 +1,7 @@
-mixin ceratePostForm(userLoggedIn)
+mixin createPostForm(userLoggedIn)
     .postFormContainer 
         .userImageContainer
-            img(src="userLoggedIn.profilePic", alt="user's profile pic")
+            img(src=userLoggedIn.profilePic, alt="user's profile pic")
         .textAreaContainer
             textarea#postTextArea(placeholder="spill your mind out")
             .buttonContainer
