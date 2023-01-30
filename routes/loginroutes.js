@@ -3,7 +3,7 @@ const app=express();
 const router=express.Router();
 const bodyParser=require('body-parser')
 const bcrypt=require('bcrypt');
-const User=require('../schemas/userSchema.js');
+const User=require('../schemas/userSchema');
 
 app.set("view engine",'pug');
 app.set('views','views');
@@ -30,7 +30,7 @@ router.post('/', async(req,res,next)=>{
         });
 
         if(user!=null){
-            let result= await bcrypt.compare(req.body.logPassword ,user.password)
+            let result = await bcrypt.compare(req.body.logPassword ,user.password)
 
             if(result===true){
                 req.session.user=user;
