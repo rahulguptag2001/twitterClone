@@ -28,10 +28,10 @@ router.post('/', async(req,res,next)=>{
             payload.errorMessage="something went wrong."
             res.status(200).render("login",payload);
         });
-
+        console.log(user);
         if(user!=null){
             let result = await bcrypt.compare(req.body.logPassword ,user.password)
-
+            console.log(result);
             if(result===true){
                 req.session.user=user;
                 return res.redirect("/");

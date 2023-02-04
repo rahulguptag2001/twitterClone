@@ -21,7 +21,7 @@ router.post("/", async (req, res, next) => {
     let email=req.body.email.trim();
     let password =req.body.password;
 
-    let payload =req.body;
+    let dataUser =req.body;
 
 
     if(firstName &&lastName &&userName && email && password){
@@ -33,8 +33,8 @@ router.post("/", async (req, res, next) => {
         })
         .catch((error)=>{
             console.log(error);
-            payload.errorMessage="something went wrong."
-            res.status(200).render("register",payload);
+            dataUser.errorMessage="something went wrong."
+            res.status(200).render("register",dataUser);
         });
 
         if(user==null){
@@ -52,18 +52,18 @@ router.post("/", async (req, res, next) => {
         else{
             //user found
             if(email == user.email){
-                payload.errorMessage="Email already in use.";
+                dataUser.errorMessage="Email already in use.";
             }
             else{
-                payload.errorMessage="username already in use.";
+                dataUser.errorMessage="username already in use.";
             }
-            res.status(200).render("register",payload);
+            res.status(200).render("register",dataUser);
 
         }
     }
     else{
-        payload.errorMessage="make sure each feild has a valid value."
-        res.status(200).render("register",payload);
+        dataUser.errorMessage="make sure each feild has a valid value."
+        res.status(200).render("register",dataUser);
     }
 })
 module.exports = router;

@@ -35,9 +35,9 @@ $("#submitPostButton").click(()=>{
 
 function createPostHtml(postData){
  
-    var postedBy=postData.postedBy;
-    var displayName=postedBy.firstname + " " + postedBy.lastname;
-    var timestamp=postData.createdAt;
+    let postedBy=postData.postedBy;
+    let displayName=postedBy.firstname + " " + postedBy.lastname;
+    let timestamp=postData.createdAt;
 
     return `<div class='post'>
                 <div class='mainContentContainer'>

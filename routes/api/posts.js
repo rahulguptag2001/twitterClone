@@ -12,17 +12,17 @@ router.get('/',  (req,res,next)=>{
 })
 router.post('/', async (req,res,next)=>{
     if(!req.body.content){
-        console.log('content param not sent with request');
+        console.log('likh to de kuch');
         return res.sendStatus(400);
     }
     let postDate={
         content:req.body.content,
-        postedby:req.session.user
+        postedBy:req.session.user
     }
     Post.create(postDate)
     .then(async newPost=>{
-        newPost= await User.populate(newPost,{path:"postedby"})
-
+        newPost= await User.populate(newPost,{path:"postedBy"})
+        console.log(newPost);
         res.status(201).send(newPost);
     })
     .catch( error=>{

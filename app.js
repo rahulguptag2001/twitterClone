@@ -42,9 +42,9 @@ app.use('/api/posts',postsApiRoutes);
 
 app.get('/', middleware.requireLogin, (req, res, next) => {
 
-    let payload = {
+    let page = {
         pageTitle: "Home",
         userLoggedIn: req.session.user
     }
-    res.status(200).render("home.pug", payload);
+    res.status(200).render("home.pug", page);
 })
